@@ -8,6 +8,7 @@ import healthRoutes from "./routes/health.routes.js";
 import productsRoutes from "./routes/products.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import adminRoutes from "./routes/admin.routes.js";
+import trainingPackageRoutes from "./routes/training-package.routes.js";
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use("/health", healthRoutes);
 app.use("/products", productsRoutes);
 app.use("/auth", authRoutes);
 app.use("/admin", adminRoutes);
+app.use("/training-packages", trainingPackageRoutes);
 
 
 export default app;

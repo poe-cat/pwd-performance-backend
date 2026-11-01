@@ -63,6 +63,42 @@ async function main() {
     },
   });
 
+
+  
+  const trainingPackages = [
+    {
+      name: "Prowadzenie online - 1 miesiąc",
+      description: "Indywidualna współpraca treningowa online przez 1 miesiąc.",
+      durationMonths: 1,
+      price: 499.00,
+    },
+    {
+      name: "Prowadzenie online - 3 miesiące",
+      description: "Indywidualna współpraca treningowa online przez 3 miesiące.",
+      durationMonths: 3,
+      price: 1200.00,
+    },
+  ];
+
+  for (const trainingPackage of trainingPackages) {
+    const existingPackage = await prisma.trainingPackage.findFirst({
+      where: {
+        name: trainingPackage.name,
+      },
+    });
+
+    if (!existingPackage) {
+      await prisma.trainingPackage.create({
+        data: trainingPackage,
+      });
+    }
+  }
+
+
+
+
+
+
   console.log("Seed zakończony.");
 }
 
