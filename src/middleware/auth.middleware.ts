@@ -67,3 +67,21 @@ export async function requireAuth(
     next(error);
   }
 }
+
+
+export function requireAdmin(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void {
+  const user = res.locals.user;
+
+  if (!user || user.role !== "ADMIN") {
+    res.status(403).json({
+      error: "Brak uprawnień administratora",
+    });
+    return;
+  }
+
+  next();
+}
